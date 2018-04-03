@@ -7,6 +7,7 @@ RUN apk add --no-cache --virtual .build-deps \
     imagemagick-dev \
     libtool \
     libxml2-dev \
+    libpng-dev \
     postgresql-dev \
     sqlite-dev
 
@@ -32,6 +33,7 @@ RUN docker-php-ext-install \
     pcntl \
     tokenizer \
     xml \
+    gd \
     zip
 
 # Install composer
