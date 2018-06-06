@@ -17,7 +17,8 @@ RUN apk add --no-cache \
     git \
     imagemagick \
     mysql-client \
-    postgresql-libs
+    postgresql-libs \
+    openssh-client
 
 # Install php extensions
 RUN pecl install imagick
