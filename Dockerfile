@@ -21,6 +21,9 @@ RUN apk add --no-cache \
     nodejs-npm \
     openssh-client \
     postgresql-libs
+    
+# Install missing binary for Laravel-mix
+RUN npm install -g pngquant-bin
 
 # Install php extensions
 RUN pecl install imagick
