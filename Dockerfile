@@ -7,23 +7,25 @@ RUN apk add --no-cache --virtual .build-deps \
     imagemagick-dev \
     libtool \
     libxml2-dev \
-    libpng-dev \
     postgresql-dev \
     sqlite-dev
 
 # Install production dependencies
 RUN apk add --no-cache \
+    bash \
     curl \
+    g++ \
+    gcc \
     git \
     imagemagick \
+    libc-dev \
+    libpng-dev \
+    make \
     mysql-client \
     nodejs \
     nodejs-npm \
     openssh-client \
     postgresql-libs
-    
-# Install missing binary for Laravel-mix
-RUN npm install -g pngquant-bin
 
 # Install php extensions
 RUN pecl install imagick
