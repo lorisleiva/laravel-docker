@@ -2,7 +2,8 @@ image: lorisleiva/laravel-docker:latest
 
 .init_ssh: &init_ssh |
   eval $(ssh-agent -s)
-  echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  echo "$SSH_PRIVATE_KEY_DEPLOYMENTS" | tr -d '\r' | ssh-add - > /dev/null
+  echo "$SSH_PRIVATE_KEY_DEPENDENCIES" | tr -d '\r' | ssh-add - > /dev/null
   mkdir -p ~/.ssh
   chmod 700 ~/.ssh
   [[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
@@ -24,6 +25,7 @@ composer:
     paths:
       - vendor/
   script:
+      - *init_ssh
       - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
       - cp .env.example .env
       - php artisan key:generate
@@ -40,6 +42,7 @@ node:
     paths:
       - node_modules/
   script:
+      - *init_ssh
       - ${NODE_MODULE_MANAGER:-npm} install
       - ${NODE_MODULE_MANAGER:-npm} run production
   artifacts:
