@@ -26,7 +26,8 @@ RUN apk add --no-cache \
     nodejs-npm \
     openssh-client \
     postgresql-libs \
-    rsync
+    rsync \
+    yarn
 
 # Install php extensions
 RUN pecl install imagick

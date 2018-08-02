@@ -33,15 +33,15 @@ composer:
       - vendor/
       - .env
 
-npm:
+node:
   stage: build
   cache:
-    key: ${CI_COMMIT_REF_SLUG}-npm
+    key: ${CI_COMMIT_REF_SLUG}-node
     paths:
       - node_modules/
   script:
-      - npm install
-      - npm run production
+      - ${NODE_MODULE_MANAGER:-npm} install
+      - ${NODE_MODULE_MANAGER:-npm} run production
   artifacts:
     expire_in: 1 month
     paths:
