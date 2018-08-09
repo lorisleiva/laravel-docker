@@ -29,7 +29,8 @@ RUN apk add --no-cache \
     rsync
 
 # Install php extensions
-RUN pecl install imagick
+RUN pecl install imagick \
+    pecl install xdebug && docker-php-ext-enable xdebug
 RUN pear install PHP_CodeSniffer
 RUN docker-php-ext-enable imagick
 RUN docker-php-ext-install \
