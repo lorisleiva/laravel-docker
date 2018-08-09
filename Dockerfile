@@ -20,6 +20,11 @@ RUN apk add --no-cache \
     imagemagick \
     libc-dev \
     libpng-dev \
+    freetype \
+    libpng \
+    libjpeg-turbo \
+    freetype-dev \
+    libjpeg-turbo-dev \
     make \
     mysql-client \
     nodejs \
@@ -43,8 +48,12 @@ RUN docker-php-ext-install \
     pcntl \
     tokenizer \
     xml \
-    gd \
     zip
+RUN docker-php-ext-configure gd \
+    --with-freetype-dir=/usr/include/ \
+    --with-png-dir=/usr/include/ \
+    --with-jpeg-dir=/usr/include/
+RUN NPROC=$(getconf _NPROCESSORS_ONLN)&& docker-php-ext-install -j${NPROC} gd
 
 # Install composer
 RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
