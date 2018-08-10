@@ -57,6 +57,9 @@ RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV PATH="./vendor/bin:$PATH"
 
+#add laravel/envoy for CI/CD 
+RUN composer global require "laravel/envoy=~1.0"
+
 # Cleanup dev dependencies
 RUN apk del -f .build-deps
 
