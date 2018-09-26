@@ -31,7 +31,8 @@ RUN apk add --no-cache \
     nodejs-npm \
     openssh-client \
     postgresql-libs \
-    rsync
+    rsync \
+    aws-cli
 
 # Install php extensions
 RUN pecl install \
