@@ -32,7 +32,9 @@ RUN apk add --no-cache \
     openssh-client \
     postgresql-libs \
     rsync \
-    aws-cli
+    python \
+    py-pip \
+    groff
 
 # Install php extensions
 RUN pecl install \
@@ -64,6 +66,9 @@ RUN NPROC=$(getconf _NPROCESSORS_ONLN)&& docker-php-ext-install -j${NPROC} gd
 RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV PATH="./vendor/bin:$PATH"
+
+# Install AWS CLI
+RUN pip install awscli
 
 # Cleanup dev dependencies
 RUN apk del -f .build-deps
