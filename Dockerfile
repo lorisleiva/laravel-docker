@@ -34,7 +34,8 @@ RUN apk add --no-cache \
     rsync \
     python \
     py-pip \
-    groff
+    groff \
+    zip
 
 # Install php extensions
 RUN pecl install \
