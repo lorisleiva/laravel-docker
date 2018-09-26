@@ -34,9 +34,13 @@ RUN apk add --no-cache \
     rsync
 
 # Install php extensions
-RUN pecl install imagick
+RUN pecl install \
+    imagick \
+    xdebug
 RUN pear install PHP_CodeSniffer
-RUN docker-php-ext-enable imagick
+RUN docker-php-ext-enable \
+    imagick \
+    xdebug
 RUN docker-php-ext-install \
     curl \
     iconv \
