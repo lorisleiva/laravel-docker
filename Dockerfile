@@ -44,6 +44,7 @@ RUN pear install PHP_CodeSniffer
 RUN docker-php-ext-enable \
     imagick
 RUN docker-php-ext-install \
+    exif \
     curl \
     iconv \
     mbstring \
