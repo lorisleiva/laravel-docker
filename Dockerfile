@@ -20,6 +20,7 @@ RUN apk add --no-cache \
     imagemagick \
     libc-dev \
     libpng-dev \
+    libzip-dev \
     freetype \
     libpng \
     libjpeg-turbo \
