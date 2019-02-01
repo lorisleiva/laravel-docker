@@ -45,6 +45,7 @@ RUN pear install PHP_CodeSniffer
 RUN docker-php-ext-enable \
     imagick
 RUN docker-php-ext-install \
+    bcmath \
     exif \
     curl \
     iconv \
