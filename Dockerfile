@@ -41,7 +41,7 @@ RUN apk add --no-cache \
 # Install php extensions
 RUN pecl install \
     imagick
-RUN pear install PHP_CodeSniffer
+# RUN pear install PHP_CodeSniffer
 RUN docker-php-ext-enable \
     imagick
 RUN docker-php-ext-install \
