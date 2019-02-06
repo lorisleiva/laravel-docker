@@ -26,18 +26,20 @@ RUN apk add --no-cache \
     nodejs-npm \
     openssh-client \
     postgresql-libs \
-    rsync
+    rsync \
+    zlib-dev \
+    libzip-dev
 
 # Install PECL and PEAR extensions
 RUN pecl install \
     imagick \
     xdebug
-RUN pear install PHP_CodeSniffer
 
 # Install and enable php extensions
 RUN docker-php-ext-enable \
     imagick \
     xdebug
+RUN docker-php-ext-configure zip --with-libzip
 RUN docker-php-ext-install \
     curl \
     iconv \
@@ -52,6 +54,9 @@ RUN docker-php-ext-install \
     gd \
     zip \
     bcmath
+
+# Install PHP_CodeSniffer
+RUN composer global require "squizlabs/php_codesniffer=*"
 
 # Install composer
 RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
