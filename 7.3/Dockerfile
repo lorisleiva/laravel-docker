@@ -55,9 +55,10 @@ RUN docker-php-ext-install \
     bcmath
 
 # Install composer
+ENV COMPOSER_HOME /composer
+ENV PATH /composer/vendor/bin:$PATH
+ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
-ENV COMPOSER_ALLOW_SUPERUSER=1
-ENV PATH="./vendor/bin:$PATH"
 
 # Install PHP_CodeSniffer
 RUN composer global require "squizlabs/php_codesniffer=*"
