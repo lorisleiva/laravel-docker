@@ -36,14 +36,18 @@ RUN apk add --no-cache \
     python \
     py-pip \
     groff \
-    zip
+    zip \
+    zlib-dev
 
 # Install php extensions
 RUN pecl install \
-    imagick
+    imagick \
+    xdebug
 # RUN pear install PHP_CodeSniffer
 RUN docker-php-ext-enable \
-    imagick
+    imagick \
+    xdebug
+RUN docker-php-ext-configure zip --with-libzip
 RUN docker-php-ext-install \
     bcmath \
     exif \
