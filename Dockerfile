@@ -1,4 +1,4 @@
-FROM php:alpine
+FROM php:7.2-alpine
 
 # Install dev dependencies
 RUN apk add --no-cache --virtual .build-deps \
@@ -75,6 +75,9 @@ ENV PATH="./vendor/bin:$PATH"
 
 # Install AWS CLI
 RUN pip install awscli
+
+# Install PHP_CodeSniffer
+RUN composer global require "squizlabs/php_codesniffer=*"
 
 # Cleanup dev dependencies
 RUN apk del -f .build-deps
