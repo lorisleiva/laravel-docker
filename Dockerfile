@@ -7,6 +7,7 @@ RUN apk add --no-cache --virtual .build-deps \
     imagemagick-dev \
     libtool \
     libxml2-dev \
+    php7-phpdbg \
     postgresql-dev \
     sqlite-dev
 
@@ -41,12 +42,10 @@ RUN apk add --no-cache \
 
 # Install php extensions
 RUN pecl install \
-    imagick \
-    xdebug
+    imagick
 # RUN pear install PHP_CodeSniffer
 RUN docker-php-ext-enable \
-    imagick \
-    xdebug
+    imagick
 RUN docker-php-ext-configure zip --with-libzip
 RUN docker-php-ext-install \
     bcmath \
