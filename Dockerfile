@@ -37,6 +37,7 @@ RUN apk add --no-cache \
     python \
     py-pip \
     groff \
+    wkhtmltopdf \
     zip \
     zlib-dev
 
