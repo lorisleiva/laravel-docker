@@ -68,5 +68,9 @@ RUN composer global require "squizlabs/php_codesniffer=*"
 # Cleanup dev dependencies
 RUN apk del -f .build-deps
 
+# fix work iconv library with alphine
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted gnu-libiconv
+ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
+
 # Setup working directory
 WORKDIR /var/www
