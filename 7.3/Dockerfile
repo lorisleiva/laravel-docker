@@ -43,6 +43,7 @@ RUN docker-php-ext-enable \
 RUN docker-php-ext-configure zip --with-libzip
 RUN docker-php-ext-install \
     curl \
+    exif \
     iconv \
     mbstring \
     pdo \
