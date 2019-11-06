@@ -70,5 +70,8 @@ RUN composer global require "squizlabs/php_codesniffer=*"
 # Cleanup dev dependencies
 RUN apk del -f .build-deps
 
+# Increase php memory limit
+RUN sed -i -e "s/^ *memory_limit.*/memory_limit = 512M/g" /usr/local/etc/php/php.ini
+
 # Setup working directory
 WORKDIR /var/www
