@@ -73,6 +73,7 @@ RUN apk del -f .build-deps
 # Increase php memory limit
 RUN sed -i -e "s/^ *memory_limit.*/memory_limit = 512M/g" /usr/local/etc/php/php.ini-production
 RUN sed -i -e "s/^ *memory_limit.*/memory_limit = 512M/g" /usr/local/etc/php/php.ini-development
+RUN echo "memory_limit=512M" > /usr/local/etc/php/conf.d/memory-limit-php.ini
 
 # Setup working directory
 WORKDIR /var/www
