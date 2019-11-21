@@ -42,6 +42,7 @@ RUN docker-php-ext-enable \
     xdebug
 RUN docker-php-ext-configure zip --with-libzip
 RUN docker-php-ext-install \
+    calendar \
     curl \
     exif \
     iconv \
