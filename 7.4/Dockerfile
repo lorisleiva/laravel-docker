@@ -20,6 +20,7 @@ RUN apk add --no-cache \
     imagemagick \
     libc-dev \
     libpng-dev \
+    libzip-dev \
     make \
     mysql-client \
     nodejs \
@@ -28,8 +29,7 @@ RUN apk add --no-cache \
     openssh-client \
     postgresql-libs \
     rsync \
-    zlib-dev \
-    libzip-dev
+    zlib-dev
 
 # Install PECL and PEAR extensions
 RUN pecl install \
@@ -43,7 +43,6 @@ RUN docker-php-ext-enable \
 RUN docker-php-ext-install \
     curl \
     iconv \
-    mbstring \
     pdo \
     pdo_mysql \
     pdo_pgsql \
