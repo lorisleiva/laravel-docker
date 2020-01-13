@@ -25,6 +25,7 @@ RUN apk add --no-cache \
     mysql-client \
     nodejs \
     nodejs-npm \
+    oniguruma-dev \
     yarn \
     openssh-client \
     postgresql-libs \
@@ -41,8 +42,11 @@ RUN docker-php-ext-enable \
     imagick \
     xdebug
 RUN docker-php-ext-install \
+    bcmath \
     curl \
+    gd \
     iconv \
+    mbstring \
     pdo \
     pdo_mysql \
     pdo_pgsql \
@@ -50,9 +54,7 @@ RUN docker-php-ext-install \
     pcntl \
     tokenizer \
     xml \
-    gd \
-    zip \
-    bcmath
+    zip
 
 # Install composer
 ENV COMPOSER_HOME /composer
