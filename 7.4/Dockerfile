@@ -14,11 +14,13 @@ RUN apk add --no-cache --virtual .build-deps \
 RUN apk add --no-cache \
     bash \
     curl \
+    freetype-dev \
     g++ \
     gcc \
     git \
     imagemagick \
     libc-dev \
+    libjpeg-turbo-dev \
     libpng-dev \
     libzip-dev \
     make \
@@ -41,9 +43,12 @@ RUN pecl install \
 RUN docker-php-ext-enable \
     imagick \
     xdebug
+RUN docker-php-ext-configure \
+    gd --with-freetype --with-jpeg
 RUN docker-php-ext-install \
     bcmath \
     curl \
+    exif \
     gd \
     iconv \
     mbstring \
