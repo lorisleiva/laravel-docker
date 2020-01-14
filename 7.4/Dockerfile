@@ -47,6 +47,7 @@ RUN docker-php-ext-configure \
     gd --with-freetype --with-jpeg
 RUN docker-php-ext-install \
     bcmath \
+    calendar \
     curl \
     exif \
     gd \
