@@ -14,12 +14,15 @@ RUN apk add --no-cache --virtual .build-deps \
 RUN apk add --no-cache \
     bash \
     curl \
+    freetype-dev \
     g++ \
     gcc \
     git \
     imagemagick \
     libc-dev \
+    libjpeg-turbo-dev \
     libpng-dev \
+    libzip-dev \
     make \
     mysql-client \
     nodejs \
@@ -28,8 +31,7 @@ RUN apk add --no-cache \
     openssh-client \
     postgresql-libs \
     rsync \
-    zlib-dev \
-    libzip-dev
+    zlib-dev
 
 # Install PECL and PEAR extensions
 RUN pecl install \
@@ -40,11 +42,15 @@ RUN pecl install \
 RUN docker-php-ext-enable \
     imagick \
     xdebug
-RUN docker-php-ext-configure zip --with-libzip
+RUN docker-php-ext-configure \
+    gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    zip --with-libzip
 RUN docker-php-ext-install \
+    bcmath \
     calendar \
     curl \
     exif \
+    gd \
     iconv \
     mbstring \
     pdo \
@@ -54,9 +60,7 @@ RUN docker-php-ext-install \
     pcntl \
     tokenizer \
     xml \
-    gd \
-    zip \
-    bcmath
+    zip
 
 # Install composer
 ENV COMPOSER_HOME /composer
