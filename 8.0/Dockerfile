@@ -26,7 +26,7 @@ RUN apk add --no-cache \
     libpng-dev \
     libzip-dev \
     make \
-    mysql-client \
+    mariadb-client \
     nodejs \
     nodejs-npm \
     oniguruma-dev \
