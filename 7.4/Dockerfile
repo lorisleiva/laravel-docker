@@ -34,6 +34,7 @@ RUN apk add --no-cache \
     openssh-client \
     postgresql-libs \
     rsync \
+    supervisor \
     zlib-dev
 
 # Install PECL and PEAR extensions
