@@ -37,15 +37,15 @@ RUN apk add --no-cache \
     zlib-dev
 
 # Install PECL and PEAR extensions
-RUN pecl install -o -f \
+RUN pecl install \
     redis \
-    imagick \
+    # imagick \
     xdebug
 
 # Enable PECL and PEAR extensions
 RUN docker-php-ext-enable \
     redis \
-    imagick \
+    # imagick \
     xdebug
 
 # Configure php extensions

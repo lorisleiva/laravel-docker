@@ -37,7 +37,7 @@ RUN apk add --no-cache \
     zlib-dev
 
 # Install PECL and PEAR extensions
-RUN pecl install -o -f \
+RUN pecl install \
     redis \
     imagick \
     xdebug
