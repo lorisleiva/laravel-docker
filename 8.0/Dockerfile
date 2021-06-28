@@ -28,7 +28,7 @@ RUN apk add --no-cache \
     make \
     mysql-client \
     nodejs \
-    nodejs-npm \
+    npm \
     oniguruma-dev \
     yarn \
     openssh-client \
@@ -39,13 +39,13 @@ RUN apk add --no-cache \
 # Install PECL and PEAR extensions
 RUN pecl install \
     redis \
-    # imagick \
+    imagick \
     xdebug
 
 # Enable PECL and PEAR extensions
 RUN docker-php-ext-enable \
     redis \
-    # imagick \
+    imagick \
     xdebug
 
 # Configure php extensions

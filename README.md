@@ -8,7 +8,7 @@
 | - | - | - |
 | 7.3 | 7.3 | ✅ Everything. |
 | 7.4 | 7.4 | ✅ Everything. |
-| 8.0 | 8.0 | 🚧 [Extension `imagick` missing](https://github.com/Imagick/imagick/issues/358). |
+| 8.0 | 8.0 | ✅ Everything. |
 | stable | **7.4** | 🔗 Aliases the latest stable version of PHP that supports all features of this docker image.  |
 | latest | **8.0** | 🔗 Aliases the latest stable version of PHP available (even if that version does not support all features yet). |
 
