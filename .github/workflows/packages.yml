@@ -1,0 +1,29 @@
+name: Build and publish packages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php: [8.0, 8.1]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Docker image
+        run: |
+          docker build . --tag ghcr.io/lukasleitsch/docker-laravel:${{ matrix.node }} ${{ matrix.node }} 
+          docker push ghcr.io/lukasleitsch/docker-laravel:${{ matrix.node }}
