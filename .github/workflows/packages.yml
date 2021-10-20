@@ -25,5 +25,5 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build . --tag ghcr.io/lukasleitsch/docker-laravel:${{ matrix.node }} ${{ matrix.node }} 
-          docker push ghcr.io/lukasleitsch/docker-laravel:${{ matrix.node }}
+          docker build . --tag ghcr.io/lukasleitsch/docker-laravel:${{ matrix.node }} ${{ matrix.php }} 
+          docker push ghcr.io/lukasleitsch/docker-laravel:${{ matrix.php }}
