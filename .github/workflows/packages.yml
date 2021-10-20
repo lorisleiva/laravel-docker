@@ -6,12 +6,12 @@ on:
       - main
 
 jobs:
-  publish:
+  build_and_publish:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        php: ['8.0', '8.1']
+        php: ['7.3', '7.4', 8.0', '8.1']
 
     steps:
       - uses: actions/checkout@v2
@@ -23,7 +23,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build Docker image
+      - name: Build and push Docker image
         run: |
           docker build --tag ghcr.io/lukasleitsch/docker-laravel:${{ matrix.php }} ${{ matrix.php }} 
           docker push ghcr.io/lukasleitsch/docker-laravel:${{ matrix.php }}
