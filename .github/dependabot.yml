@@ -1,7 +1,17 @@
 version: 2
 updates:
   - package-ecosystem: "docker"
-    directory: "/"
+    directory: "/7.4"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "docker"
+    directory: "/8.0"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "docker"
+    directory: "/8.1"
     schedule:
       interval: "daily"
 
