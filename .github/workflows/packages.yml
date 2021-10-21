@@ -1,0 +1,55 @@
+name: Build and publish packages
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  IMAGE: lorisleiva/laravel-docker
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        include:
+          - tag: 'latest'
+            php: '8.0'
+          - tag: 'stable'
+            php: '8.0'
+          - tag: '8.1'
+            php: '8.1'
+          - tag: '8.0'
+            php: '8.0'
+          - tag: '7.4'
+            php: '7.4'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ${{ matrix.php }}
+          tags: |
+            ghcr.io/${{ env.IMAGE }}:${{ matrix.tag }}
+            ${{ env.IMAGE }}:${{ matrix.tag }}
+          cache-from: type=registry,ref=ghcr.io/${{ env.IMAGE }}:${{ matrix.tag }}
+          cache-to: type=inline
