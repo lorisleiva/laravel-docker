@@ -1,4 +1,4 @@
-FROM php:7.3-alpine3.13
+FROM php:8.1-rc-alpine3.13
 
 # Install dev dependencies
 RUN apk add --no-cache --virtual .build-deps \
@@ -29,6 +29,7 @@ RUN apk add --no-cache \
     mysql-client \
     nodejs \
     npm \
+    oniguruma-dev \
     yarn \
     openssh-client \
     postgresql-libs \
@@ -48,26 +49,20 @@ RUN docker-php-ext-enable \
     xdebug
 
 # Configure php extensions
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-configure zip --with-libzip
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 
 # Install php extensions
 RUN docker-php-ext-install \
     bcmath \
     calendar \
-    curl \
     exif \
     gd \
-    iconv \
     intl \
-    mbstring \
     pdo \
     pdo_mysql \
     pdo_pgsql \
-    pdo_sqlite \
     pcntl \
     soap \
-    tokenizer \
     xml \
     zip
 

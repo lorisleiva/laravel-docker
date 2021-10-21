@@ -6,9 +6,9 @@
 
 | Tags | PHP version | Features |
 | - | - | - |
-| 7.3 | 7.3 | ✅ Everything. |
 | 7.4 | 7.4 | ✅ Everything. |
 | 8.0 | 8.0 | ✅ Everything. |
+| 8.1 | 8.1 | ✅ Everything. |
 | stable | **8.0** | 🔗 Aliases the latest stable version of PHP that supports all features of this docker image.  |
 | latest | **8.0** | 🔗 Aliases the latest stable version of PHP available (even if that version does not support all features yet). |
 
