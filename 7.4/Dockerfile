@@ -1,4 +1,4 @@
-FROM php:7.4.25-alpine3.13
+FROM php:7.4.26-alpine3.13
 
 # Install dev dependencies
 RUN apk add --no-cache --virtual .build-deps \
