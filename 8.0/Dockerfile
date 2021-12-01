@@ -1,58 +1,17 @@
 FROM php:8.0.13-alpine3.13
 
+# Add docker-php-extension-installer script
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
 # Install dev dependencies
-RUN apk add --no-cache --virtual .build-deps \
-    $PHPIZE_DEPS \
-    curl-dev \
-    imagemagick-dev \
-    libtool \
-    libxml2-dev \
-    postgresql-dev \
-    sqlite-dev
-
-# Install production dependencies
-RUN apk add --no-cache \
-    bash \
-    curl \
-    freetype-dev \
-    g++ \
-    gcc \
-    git \
-    icu-dev \
-    icu-libs \
-    imagemagick \
-    libc-dev \
-    libjpeg-turbo-dev \
-    libpng-dev \
-    libzip-dev \
-    make \
-    mysql-client \
-    nodejs \
-    npm \
-    oniguruma-dev \
-    yarn \
-    openssh-client \
-    postgresql-libs \
-    rsync \
-    zlib-dev
-
-# Install PECL and PEAR extensions
-RUN pecl install \
-    redis \
-    imagick \
-    xdebug
-
-# Enable PECL and PEAR extensions
-RUN docker-php-ext-enable \
-    redis \
-    imagick \
-    xdebug
-
-# Configure php extensions
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN apk add --no-cache --virtual .build-deps
 
 # Install php extensions
-RUN docker-php-ext-install \
+RUN chmod +x /usr/local/bin/install-php-extensions && \
+    install-php-extensions \
+    redis \
+    imagick \
+    xdebug \
     bcmath \
     calendar \
     curl \
