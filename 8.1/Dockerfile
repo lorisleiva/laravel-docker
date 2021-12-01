@@ -17,12 +17,10 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
     exif \
     gd \
     intl \
-    pdo \
     pdo_mysql \
     pdo_pgsql \
     pcntl \
     soap \
-    xml \
     zip
 
 # Install composer

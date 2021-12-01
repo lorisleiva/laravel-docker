@@ -14,20 +14,13 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
     xdebug \
     bcmath \
     calendar \
-    curl \
     exif \
     gd \
-    iconv \
     intl \
-    mbstring \
-    pdo \
     pdo_mysql \
     pdo_pgsql \
-    pdo_sqlite \
     pcntl \
     soap \
-    tokenizer \
-    xml \
     zip
 
 # Install composer
