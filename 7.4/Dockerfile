@@ -9,9 +9,9 @@ RUN apk add --no-cache --virtual .build-deps
 # Install php extensions
 RUN chmod +x /usr/local/bin/install-php-extensions && \
     install-php-extensions \
-    redis \
-    imagick \
-    xdebug \
+    redis-stable \
+    imagick-stable \
+    xdebug-stable \
     bcmath \
     calendar \
     exif \
