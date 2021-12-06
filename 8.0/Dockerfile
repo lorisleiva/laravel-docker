@@ -7,13 +7,24 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 RUN apk add --no-cache \
     bash \
     curl \
+    freetype-dev \
+    g++ \
+    gcc \
     git \
+    icu-dev \
+    icu-libs \
+    libc-dev \
+    libzip-dev \
+    make \
     mysql-client \
     nodejs \
     npm \
+    oniguruma-dev \
     yarn \
     openssh-client \
-    rsync
+    postgresql-libs \
+    rsync \
+    zlib-dev
 
 # Install php extensions
 RUN chmod +x /usr/local/bin/install-php-extensions && \
@@ -32,6 +43,9 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
     pcntl \
     soap \
     zip
+
+# Add local and global vendor bin to PATH.
+ENV PATH ./vendor/bin:/composer/vendor/bin:$PATH
 
 # Install PHP_CodeSniffer
 RUN composer global require "squizlabs/php_codesniffer=*"
