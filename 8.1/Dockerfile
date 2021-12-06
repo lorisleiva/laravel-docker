@@ -7,6 +7,7 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 RUN apk add --no-cache \
     bash \
     curl \
+    git \
     mysql-client \
     nodejs \
     npm \
