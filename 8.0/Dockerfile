@@ -42,7 +42,8 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
     pdo_pgsql \
     pcntl \
     soap \
-    zip
+    zip \
+    pcov-stable
 
 # Add local and global vendor bin to PATH.
 ENV PATH ./vendor/bin:/composer/vendor/bin:/root/.composer/vendor/bin:/usr/local/bin:$PATH
