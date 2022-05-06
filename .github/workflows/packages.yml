@@ -27,7 +27,7 @@ jobs:
             php: '7.4'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
