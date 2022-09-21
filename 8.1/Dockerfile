@@ -24,7 +24,9 @@ RUN apk add --no-cache \
     openssh-client \
     postgresql-libs \
     rsync \
-    zlib-dev
+    zlib-dev \
+    pecl install xdebug \
+    docker-php-ext-enable xdebug
 
 # Install php extensions
 RUN chmod +x /usr/local/bin/install-php-extensions && \
