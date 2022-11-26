@@ -5,6 +5,8 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 
 # Install dependencies
 RUN apk add --no-cache \
+    autoconf \
+    automake \
     bash \
     curl \
     freetype-dev \
