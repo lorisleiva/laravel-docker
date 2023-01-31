@@ -23,6 +23,7 @@ RUN apk add --no-cache \
     yarn \
     openssh-client \
     postgresql-libs \
+    postgresql-client \
     rsync \
     zlib-dev
 
