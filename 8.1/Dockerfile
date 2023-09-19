@@ -10,6 +10,7 @@ RUN apk add --no-cache \
     freetype-dev \
     g++ \
     gcc \
+    gcompat \
     git \
     icu-dev \
     icu-libs \
