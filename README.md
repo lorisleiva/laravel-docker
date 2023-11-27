@@ -6,7 +6,6 @@
 
 | Tags   | PHP version | Features |
 |--------|-------------| - |
-| 8.0    | 8.0         | ✅ Everything. |
 | 8.1    | 8.1         | ✅ Everything. |
 | 8.2    | 8.2         | ✅ Everything. |
 | 8.3    | 8.3         | ✅ Everything. |
