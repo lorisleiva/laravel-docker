@@ -44,12 +44,21 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Setup QEMU for multi-platform builds
+        uses: docker/setup-qemu-action@v2
+        with:
+          platforms: linux/amd64,linux/arm64
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v3
         with:
           push: true
           context: ${{ matrix.php }}
+          platforms: linux/amd64,linux/arm64
           tags: |
             ghcr.io/${{ env.IMAGE }}:${{ matrix.tag }}
             ${{ env.IMAGE }}:${{ matrix.tag }}
