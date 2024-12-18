@@ -23,6 +23,7 @@ RUN apk add --no-cache \
     oniguruma-dev \
     yarn \
     openssh-client \
+    postgresql-client\
     postgresql-libs \
     rsync \
     zlib-dev
