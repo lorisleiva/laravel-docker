@@ -27,7 +27,7 @@ jobs:
             php: "8.2"
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
