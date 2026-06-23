@@ -2,6 +2,10 @@ name: Build and publish packages
 
 on:
   workflow_dispatch:
+  schedule:
+    # Rebuild weekly (every Sunday at 00:00 UTC) so images pick up the
+    # latest base image and dependency updates even without code changes.
+    - cron: "0 0 * * 0"
   push:
     branches:
       - main
